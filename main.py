@@ -1,4 +1,4 @@
-from ttkbootstrap import Window, Frame, Label, Entry
+from ttkbootstrap import Window, Frame, Label, Entry, Button
 import tools as tls
 
 
@@ -39,7 +39,17 @@ class Login(Window):
         self.entPass = Entry(self.entFrame, width=20, show="*")
         self.entPass.grid(row=1, column=1)
 
+        # Button Frames
+        self.btnFrame = Frame(self)
+        self.btnFrame.pack()
 
-if __name__ == ("__main__"):
+        self.btnEnter = Button(self.btnFrame, width=15, text="Enter")
+        self.btnEnter.grid(row=0, column=0)
+
+        self.btnClose = Button(self.btnFrame, width=15, text="Close")
+        self.btnClose.grid(row=1, column=0)
+
+
+if __name__ == "__main__":
     app = Login()
     app.mainloop()
