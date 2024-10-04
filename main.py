@@ -4,14 +4,16 @@ import tools as tls
 
 class Login(Window):
     def __init__(self):
-        super().__init__(title="Login", resizable=(False, False))
+        super().__init__(title="Login", resizable=(False, False),
+                         themename="darkly")
 
         # Label Frame
         self.lblFrame = Frame(self)
-        self.lblFrame.pack()
+        self.lblFrame.pack(padx=(15, 15), pady=(15, 0), fill="x")
 
         self.prueba1 = Label(self.lblFrame, text="Login",
-                             font=("Arial", "20", "bold"))
+                             font=("Arial", "20", "bold"),
+                             bootstyle="info")
         self.prueba1.pack()
 
         # Label Image
