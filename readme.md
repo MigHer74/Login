@@ -8,6 +8,7 @@
 | Files            | Description                                                      |
 | ---------------- | ---------------------------------------------------------------- |
 | main.py          | The main file containing the application.                        |
+| tools.py         | Script with functions or classes for the project.                |
 | login.png        | Image file.                                                      |
 | requirements.txt | File containing the names of the project's additional libraries. |
 | readme.md        | Description and information of the project.                      |
