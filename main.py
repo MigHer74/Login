@@ -20,10 +20,10 @@ class Login(Window):
         self.imgFront = tls.imageItem("login.png", 250, 250)
 
         self.imgFrame = Frame(self)
-        self.imgFrame.pack()
+        self.imgFrame.pack(padx=(15, 15), pady=(15, 0))
 
-        self.prueba = Label(self.imgFrame, image=self.imgFront)
-        self.prueba.pack()
+        self.lblimg = Label(self.imgFrame, image=self.imgFront)
+        self.lblimg.pack()
 
         # Entry Frames
         self.entFrame = Frame(self)
