@@ -11,10 +11,10 @@ class Login(Window):
         self.lblFrame = Frame(self)
         self.lblFrame.pack(padx=(15, 15), pady=(15, 0), fill="x")
 
-        self.prueba1 = Label(self.lblFrame, text="Login",
-                             font=("Arial", "20", "bold"),
-                             bootstyle="info")
-        self.prueba1.pack()
+        self.lblTitle = Label(self.lblFrame, text="Login",
+                              font=("Arial", "20", "bold"),
+                              bootstyle="info")
+        self.lblTitle.pack()
 
         # Label Image
         self.imgFront = tls.imageItem("login.png", 250, 250)
