@@ -1,4 +1,4 @@
-from ttkbootstrap import Window, Frame, Label
+from ttkbootstrap import Window, Frame, Label, Entry
 import tools as tls
 
 
@@ -22,6 +22,22 @@ class Login(Window):
 
         self.prueba = Label(self.imgFrame, image=self.imgFront)
         self.prueba.pack()
+
+        # Entry Frames
+        self.entFrame = Frame(self)
+        self.entFrame.pack()
+
+        self.lblUser = Label(self.entFrame, text="User :")
+        self.lblUser.grid(row=0, column=0)
+
+        self.lblPass = Label(self.entFrame, text="Password :")
+        self.lblPass.grid(row=1, column=0)
+
+        self.entUser = Entry(self.entFrame, width=20)
+        self.entUser.grid(row=0, column=1)
+
+        self.entPass = Entry(self.entFrame, width=20, show="*")
+        self.entPass.grid(row=1, column=1)
 
 
 if __name__ == ("__main__"):
