@@ -46,7 +46,8 @@ class Login(Window):
         self.btnEnter = Button(self.btnFrame, width=15, text="Enter")
         self.btnEnter.grid(row=0, column=0)
 
-        self.btnClose = Button(self.btnFrame, width=15, text="Close")
+        self.btnClose = Button(self.btnFrame, width=15, text="Close",
+                               command=self.destroy)
         self.btnClose.grid(row=1, column=0)
 
 
