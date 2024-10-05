@@ -19,3 +19,12 @@ def existing_table():
     curdb.execute(sqldb)
     condb.commit()
     condb.close()
+
+
+def retrieve_info():
+    condb = connect()
+    curdb = condb.cursor()
+    datdb = curdb.execute("SELECT * FROM users ORDER BY user_id").fetchall()
+    condb.close()
+    return datdb
+
