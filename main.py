@@ -1,4 +1,4 @@
-from ttkbootstrap import Window, Frame, Label, Entry, Button
+from ttkbootstrap import Window, Frame, Label, Entry, Button, Combobox
 import tools as tls
 
 
@@ -38,7 +38,10 @@ class Login(Window):
         self.lblPass = Label(self.entFrame, text="Password :")
         self.lblPass.grid(row=1, column=0, padx=(15, 15), pady=(15, 15))
 
-        self.entUser = Entry(self.entFrame, width=20)
+        # self.entUser = Entry(self.entFrame, width=20)
+        # self.entUser.grid(row=0, column=1, padx=(15, 15), pady=(15, 0))
+
+        self.entUser = Combobox(self.entFrame, width=18, state="disable")
         self.entUser.grid(row=0, column=1, padx=(15, 15), pady=(15, 0))
 
         self.entPass = Entry(self.entFrame, width=20, show="*")
