@@ -9,7 +9,8 @@ class Login(Window):
 
         # Label Frame
         self.lblFrame = Frame(self)
-        self.lblFrame.pack(padx=(15, 15), pady=(15, 0), fill="x")
+        self.lblFrame.grid(row=0, column=0, columnspan=2,
+                           padx=(15, 15), pady=(15, 0))
 
         self.lblTitle = Label(self.lblFrame, text="Login",
                               font=("Arial", "20", "bold"),
@@ -20,15 +21,15 @@ class Login(Window):
         self.imgFront = tls.imageItem("login.png", 250, 250)
 
         self.imgFrame = Frame(self)
-        self.imgFrame.pack(padx=(15, 15), pady=(15, 0))
+        self.imgFrame.grid(row=1, column=0, rowspan=2,
+                           padx=(15, 15), pady=(15, 15))
 
         self.lblimg = Label(self.imgFrame, image=self.imgFront)
         self.lblimg.pack()
 
         # Entry Frames
         self.entFrame = Frame(self, relief="raised")
-        self.entFrame.pack(padx=(15, 15), pady=(15, 0),
-                           before=self.imgFrame, side="right")
+        self.entFrame.grid(row=1, column=1, padx=(15, 20), pady=(15, 0))
 
         self.lblUser = Label(self.entFrame, text="User :")
         self.lblUser.grid(row=0, column=0, padx=(15, 15), pady=(15, 0),
@@ -45,7 +46,7 @@ class Login(Window):
 
         # Button Frame
         self.btnFrame = Frame(self)
-        self.btnFrame.pack(before=self.entFrame, side="bottom", pady=(15, 15))
+        self.btnFrame.grid(row=2, column=1, padx=(15, 20), pady=(15, 15))
 
         self.btnEnter = Button(self.btnFrame, width=15, text="Enter",
                                bootstyle="success")
