@@ -46,7 +46,7 @@ class Login(Window):
 
         # Button Frame
         self.btnFrame = Frame(self)
-        self.btnFrame.grid(row=2, column=1, padx=(15, 20), pady=(15, 15))
+        self.btnFrame.grid(row=2, column=1, padx=(15, 20), pady=(15, 0))
 
         self.btnEnter = Button(self.btnFrame, width=15, text="Enter",
                                bootstyle="success")
@@ -56,6 +56,16 @@ class Login(Window):
                                command=self.destroy,
                                bootstyle="danger-outline")
         self.btnClose.grid(row=0, column=1, padx=(15, 15))
+
+        # Add User Frame
+        self.userFrame = Frame(self)
+        self.userFrame.grid(row=3, column=1, padx=(0, 20), pady=(15, 15),
+                            sticky="e")
+
+        self.imgAdd = tls.imageItem("add_user.png", 15, 15)
+
+        self.btnAdd = Button(self.userFrame, image=self.imgAdd)
+        self.btnAdd.pack(padx=(0, 15))
 
 
 if __name__ == "__main__":
