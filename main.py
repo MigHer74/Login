@@ -26,22 +26,24 @@ class Login(Window):
         self.lblimg.pack()
 
         # Entry Frames
-        self.entFrame = Frame(self)
-        self.entFrame.pack()
+        self.entFrame = Frame(self, relief="raised")
+        self.entFrame.pack(padx=(15, 15), pady=(15, 0),
+                           before=self.imgFrame, side="right")
 
         self.lblUser = Label(self.entFrame, text="User :")
-        self.lblUser.grid(row=0, column=0)
+        self.lblUser.grid(row=0, column=0, padx=(15, 15), pady=(15, 0),
+                          sticky="w")
 
         self.lblPass = Label(self.entFrame, text="Password :")
-        self.lblPass.grid(row=1, column=0)
+        self.lblPass.grid(row=1, column=0, padx=(15, 15), pady=(15, 15))
 
         self.entUser = Entry(self.entFrame, width=20)
-        self.entUser.grid(row=0, column=1)
+        self.entUser.grid(row=0, column=1, padx=(15, 15), pady=(15, 0))
 
         self.entPass = Entry(self.entFrame, width=20, show="*")
-        self.entPass.grid(row=1, column=1)
+        self.entPass.grid(row=1, column=1, padx=(15, 15), pady=(15, 15))
 
-        # Button Frames
+        # Button Frame
         self.btnFrame = Frame(self)
         self.btnFrame.pack()
 
