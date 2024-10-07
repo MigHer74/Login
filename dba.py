@@ -9,8 +9,8 @@ def connect():
 def existing_table():
     sqldb = """CREATE TABLE IF NOT EXISTS users (
     user_id TEXT NOT NULL,
-    user_name TEXT,
-    user_password TEXT,
+    user_name TEXT NOT NULL,
+    user_password TEXT NOT NULL,
     CONSTRAINT pk_user_id PRIMARY KEY (user_id)
     );"""
 
@@ -27,4 +27,3 @@ def retrieve_info():
     datdb = curdb.execute("SELECT * FROM users ORDER BY user_id").fetchall()
     condb.close()
     return datdb
-
