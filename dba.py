@@ -22,8 +22,9 @@ def existing_table():
 
 
 def retrieve_info():
+    sqldb = "SELECT user_id, user_name FROM users ORDER BY user_id"
     condb = connect()
     curdb = condb.cursor()
-    datdb = curdb.execute("SELECT * FROM users ORDER BY user_id").fetchall()
+    datdb = curdb.execute(sqldb).fetchall()
     condb.close()
     return datdb
