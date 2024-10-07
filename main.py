@@ -2,7 +2,7 @@ from ttkbootstrap import Window, Frame, Label, Entry, Button, Combobox
 import tools as tls
 
 
-class Login(Window):
+class LoginApp(Window):
     def __init__(self):
         super().__init__(title="Login", resizable=(False, False),
                          themename="darkly")
@@ -72,5 +72,5 @@ class Login(Window):
 
 
 if __name__ == "__main__":
-    app = Login()
+    app = LoginApp()
     app.mainloop()
