@@ -1,11 +1,15 @@
 from ttkbootstrap import Window, Frame, Label, Entry, Button, Combobox
 import tools as tls
+import dba as db
 
 
 class LoginApp(Window):
     def __init__(self):
         super().__init__(title="Login", resizable=(False, False),
                          themename="darkly")
+
+        # Load User ID and Name
+        self.load_users()
 
         # Label Frame
         self.lblFrame = Frame(self)
@@ -41,7 +45,8 @@ class LoginApp(Window):
         # self.entUser = Entry(self.entFrame, width=20)
         # self.entUser.grid(row=0, column=1, padx=(15, 15), pady=(15, 0))
 
-        self.entUser = Combobox(self.entFrame, width=18, state="disable")
+        self.entUser = Combobox(self.entFrame, width=18, values=self.user_list,
+                                state="disable")
         self.entUser.grid(row=0, column=1, padx=(15, 15), pady=(15, 0))
 
         self.entPass = Entry(self.entFrame, width=20, show="*")
@@ -69,6 +74,14 @@ class LoginApp(Window):
 
         self.btnAdd = Button(self.userFrame, image=self.imgAdd)
         self.btnAdd.pack(padx=(0, 15))
+
+    def load_users(self):
+        self.user_list = []
+
+        self.user_list = db.retrieve_info()
+
+        if self.user_list != "":
+            self.entUser.config(state="readonly")
 
 
 if __name__ == "__main__":
