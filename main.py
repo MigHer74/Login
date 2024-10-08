@@ -1,4 +1,5 @@
 from ttkbootstrap import Window, Frame, Label, Entry, Button, Combobox
+from users import UsersWindow
 import tools as tls
 import dba as db
 
@@ -79,7 +80,8 @@ class LoginApp(Window):
 
         self.imgAdd = tls.imageItem("add_user.png", 15, 15)
 
-        self.btnAdd = Button(self.userFrame, image=self.imgAdd)
+        self.btnAdd = Button(self.userFrame, image=self.imgAdd,
+                             command=lambda: UsersWindow())
         self.btnAdd.pack(padx=(0, 15))
 
     def load_users(self):
