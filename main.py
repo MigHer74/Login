@@ -11,6 +11,13 @@ class LoginApp(Window):
         # Load User ID and Name
         self.load_users()
 
+        # Build Main Window
+        self.build_login()
+
+        if self.user_list_final != "":
+            self.entUser.config(state="readonly")
+
+    def build_login(self):
         # Label Frame
         self.lblFrame = Frame(self)
         self.lblFrame.grid(row=0, column=0, columnspan=2,
@@ -45,8 +52,8 @@ class LoginApp(Window):
         # self.entUser = Entry(self.entFrame, width=20)
         # self.entUser.grid(row=0, column=1, padx=(15, 15), pady=(15, 0))
 
-        self.entUser = Combobox(self.entFrame, width=18, values=self.user_list,
-                                state="disable")
+        self.entUser = Combobox(self.entFrame, width=18,
+                                values=self.user_list_final, state="disable")
         self.entUser.grid(row=0, column=1, padx=(15, 15), pady=(15, 0))
 
         self.entPass = Entry(self.entFrame, width=20, show="*")
@@ -76,12 +83,14 @@ class LoginApp(Window):
         self.btnAdd.pack(padx=(0, 15))
 
     def load_users(self):
-        self.user_list = []
+        user_list = []
+        self.user_list_final = []
 
-        self.user_list = db.retrieve_info()
+        user_list = db.retrieve_info()
 
-        if self.user_list != "":
-            self.entUser.config(state="readonly")
+        for user in user_list:
+            user_temp = f"{user[0]} | {user[1]}"
+            self.user_list_final.append(user_temp)
 
 
 if __name__ == "__main__":
