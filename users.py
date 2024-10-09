@@ -1,4 +1,4 @@
-from ttkbootstrap import Toplevel, Frame, Label, Entry, Treeview
+from ttkbootstrap import Toplevel, Frame, Label, Entry, Button, Treeview
 
 
 class UsersWindow(Toplevel):
@@ -48,3 +48,23 @@ class UsersWindow(Toplevel):
         self.tblUser.column(3, width=150)
 
         self.tblUser.pack()
+
+        # Buttons Frame
+        self.btnFrame = Frame(self)
+        self.btnFrame.pack(padx=(15, 0))
+
+        self.btnAdd = Button(self.btnFrame, width=15, text="New User",
+                             bootstyle="success")
+        self.btnAdd.pack(pady=(0, 15))
+
+        self.btnModify = Button(self.btnFrame, width=15, text="Modify User",
+                                state="disabled", bootstyle="success")
+        self.btnModify.pack(pady=(0, 15))
+
+        self.btnDelete = Button(self.btnFrame, width=15, text="Delete User",
+                                state="disabled", bootstyle="warning")
+        self.btnDelete.pack(pady=(0, 15))
+
+        self.btnClose = Button(self.btnFrame, width=15, text="Close",
+                               bootstyle="outline-danger")
+        self.btnClose.pack()
