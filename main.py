@@ -88,7 +88,7 @@ class LoginApp(Window):
         user_list = []
         self.user_list_final = []
 
-        user_list = db.retrieve_info()
+        user_list = db.retrieve_info("s")
 
         for user in user_list:
             user_temp = f"{user[0]} | {user[1]}"
