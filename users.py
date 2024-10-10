@@ -59,7 +59,7 @@ class UsersWindow(Toplevel):
         self.btnFrame.grid(row=1, column=1, padx=(15, 15), pady=(20, 20))
 
         self.btnNew = Button(self.btnFrame, width=15, text="New",
-                             bootstyle="success")
+                             command=self.new_user, bootstyle="success")
         self.btnNew.pack(pady=(0, 20))
 
         self.btnSave = Button(self.btnFrame, width=15, text="Save",
@@ -87,3 +87,14 @@ class UsersWindow(Toplevel):
         for item in data_user:
             self.tblUser.insert("", index="end", text=item[0],
                                 values=[item[0], item[1], item[2]])
+
+    def new_user(self):
+        self.entId.config(state="normal", bootstyle="info")
+        self.entName.config(state="normal", bootstyle="info")
+        self.entPassword.config(state="normal", bootstyle="info")
+
+        self.btnSave.config(state="normal")
+        self.btnCancel.config(state="normal")
+        self.btnNew.config(state="disabled")
+
+        self.entId.focus()
