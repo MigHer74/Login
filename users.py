@@ -1,4 +1,5 @@
 from ttkbootstrap import Toplevel, Frame, Label, Entry, Button, Treeview
+import dba as db
 
 
 class UsersWindow(Toplevel):
@@ -7,6 +8,9 @@ class UsersWindow(Toplevel):
 
         # Build User Info Window
         self.build_user()
+
+        # Load User Info
+        self.load_info()
 
     def build_user(self):
         # Entry Frame
@@ -44,9 +48,9 @@ class UsersWindow(Toplevel):
         self.tblUser.heading(2, text="Name")
         self.tblUser.heading(3, text="Password")
 
-        self.tblUser.column(1, width=50, anchor="center")
-        self.tblUser.column(2, width=150)
-        self.tblUser.column(3, width=150)
+        self.tblUser.column(1, width=50)
+        self.tblUser.column(2, width=175)
+        self.tblUser.column(3, width=175)
 
         self.tblUser.pack()
 
@@ -74,3 +78,12 @@ class UsersWindow(Toplevel):
                                command=self.destroy,
                                bootstyle="outline-danger")
         self.btnClose.pack()
+
+    def load_info(self):
+        data_user = db.retrieve_info("l")
+
+        self.tblUser.delete(*self.tblUser.get_children())
+
+        for item in data_user:
+            self.tblUser.insert("", index="end", text=item[0],
+                                values=[item[0], item[1], item[2]])
