@@ -54,18 +54,23 @@ class UsersWindow(Toplevel):
         self.btnFrame = Frame(self)
         self.btnFrame.grid(row=1, column=1, padx=(15, 15), pady=(20, 20))
 
-        self.btnAdd = Button(self.btnFrame, width=15, text="New User",
+        self.btnNew = Button(self.btnFrame, width=15, text="New",
                              bootstyle="success")
-        self.btnAdd.pack(pady=(0, 20))
+        self.btnNew.pack(pady=(0, 20))
 
-        self.btnModify = Button(self.btnFrame, width=15, text="Modify User",
-                                state="disabled", bootstyle="success")
-        self.btnModify.pack(pady=(0, 20))
+        self.btnSave = Button(self.btnFrame, width=15, text="Save",
+                              state="disabled", bootstyle="success")
+        self.btnSave.pack(pady=(0, 20))
 
-        self.btnDelete = Button(self.btnFrame, width=15, text="Delete User",
+        self.btnCancel = Button(self.btnFrame, width=15, text="Cancel",
+                                state="disabled", bootstyle="warning")
+        self.btnCancel.pack(pady=(0, 20))
+
+        self.btnDelete = Button(self.btnFrame, width=15, text="Delete",
                                 state="disabled", bootstyle="warning")
         self.btnDelete.pack(pady=(0, 20))
 
         self.btnClose = Button(self.btnFrame, width=15, text="Close",
+                               command=self.destroy,
                                bootstyle="outline-danger")
         self.btnClose.pack()
