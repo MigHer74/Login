@@ -63,7 +63,8 @@ class UsersWindow(Toplevel):
         self.btnNew.pack(pady=(0, 20))
 
         self.btnSave = Button(self.btnFrame, width=15, text="Save",
-                              state="disabled", bootstyle="success")
+                              command=self.save_user, state="disabled",
+                              bootstyle="success")
         self.btnSave.pack(pady=(0, 20))
 
         self.btnCancel = Button(self.btnFrame, width=15, text="Cancel",
@@ -99,6 +100,14 @@ class UsersWindow(Toplevel):
         self.btnNew.config(state="disabled")
 
         self.entId.focus()
+
+    def save_user(self):
+        db.save_info(self.entId.get(), self.entName.get(),
+                     self.entPassword.get())
+
+        self.tblFrame.focus()
+        self.load_info()
+        self.cancel_user()
 
     def cancel_user(self):
         self.entId.delete(0, "end")
