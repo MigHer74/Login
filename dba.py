@@ -32,3 +32,13 @@ def retrieve_info(dataType):
     datdb = curdb.execute(sqldb).fetchall()
     condb.close()
     return datdb
+
+
+def save_info(dataId, dataName, dataPassw):
+    sqldb = f"INSERT INTO users VALUES('{dataId}','{dataName}','{dataPassw}')"
+
+    condb = connect()
+    curdb = condb.cursor()
+    curdb.execute(sqldb)
+    condb.commit()
+    condb.close()
