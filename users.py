@@ -11,7 +11,7 @@ class UsersWindow(Toplevel):
     def build_user(self):
         # Entry Frame
         self.infoUser = Frame(self)
-        self.infoUser.pack()
+        self.infoUser.grid(row=0, column=0, columnspan=2)
 
         self.lblId = Label(self.infoUser, text="Id")
         self.lblId.grid(row=0, column=0, padx=(15, 0), pady=(15, 0))
@@ -33,7 +33,8 @@ class UsersWindow(Toplevel):
 
         # Table Frame
         self.tblFrame = Frame(self)
-        self.tblFrame.pack(padx=(15, 0), pady=(15, 0), anchor="w")
+        self.tblFrame.grid(row=1, column=0, padx=(15, 0), pady=(20, 20),
+                           sticky="w")
 
         self.tblUser = Treeview(self.tblFrame, columns=(1, 2, 3),
                                 show="headings", height=15,
@@ -51,19 +52,19 @@ class UsersWindow(Toplevel):
 
         # Buttons Frame
         self.btnFrame = Frame(self)
-        self.btnFrame.pack(padx=(15, 0))
+        self.btnFrame.grid(row=1, column=1, padx=(15, 15), pady=(20, 20))
 
         self.btnAdd = Button(self.btnFrame, width=15, text="New User",
                              bootstyle="success")
-        self.btnAdd.pack(pady=(0, 15))
+        self.btnAdd.pack(pady=(0, 20))
 
         self.btnModify = Button(self.btnFrame, width=15, text="Modify User",
                                 state="disabled", bootstyle="success")
-        self.btnModify.pack(pady=(0, 15))
+        self.btnModify.pack(pady=(0, 20))
 
         self.btnDelete = Button(self.btnFrame, width=15, text="Delete User",
                                 state="disabled", bootstyle="warning")
-        self.btnDelete.pack(pady=(0, 15))
+        self.btnDelete.pack(pady=(0, 20))
 
         self.btnClose = Button(self.btnFrame, width=15, text="Close",
                                bootstyle="outline-danger")
