@@ -21,8 +21,12 @@ def existing_table():
     condb.close()
 
 
-def retrieve_info():
-    sqldb = "SELECT user_id, user_name FROM users ORDER BY user_id"
+def retrieve_info(dataType):
+    if dataType == "s":
+        sqldb = "SELECT user_id, user_name FROM users ORDER BY user_id"
+    else:
+        sqldb = "SELECT * FROM users ORDER BY user_id"
+
     condb = connect()
     curdb = condb.cursor()
     datdb = curdb.execute(sqldb).fetchall()
