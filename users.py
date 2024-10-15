@@ -11,6 +11,9 @@ class UsersWindow(Toplevel):
         # Build User Info Window
         self.build_user()
 
+        # Center User Window on the screen.
+        self.position_center()
+
         # Load User Info
         self.load_info()
 
