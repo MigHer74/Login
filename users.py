@@ -149,8 +149,16 @@ class UsersWindow(Toplevel):
         self.btnNew.config(state="normal")
 
     def delete_user(self):
-        answer_user = Messagebox.show_question(message="Here comes the info",
+        deleteUser = db.retrieve_one_info(self.keyUser)
+
+        messageUSer = f"Do you want to delete {deleteUser[0]} user info ?."
+
+        answer_user = Messagebox.show_question(message=messageUSer,
                                                title="Delete User", alert=True,
                                                buttons=['Yes:success',
                                                         'No:outline-danger'],
                                                parent=self)
+
+        if answer_user != "No":
+            db.delete_one_info(self.keyUser)
+            self.load_info()
