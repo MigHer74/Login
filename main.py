@@ -15,6 +15,9 @@ class LoginApp(Window):
         # Build Main Window
         self.build_login()
 
+        # Center Main Window on the screen.
+        self.position_center()
+
         if self.user_list_final != "":
             self.entUser.config(state="readonly")
 
