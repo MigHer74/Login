@@ -52,3 +52,13 @@ def retrieve_one_info(dataId):
     datdb = curdb.execute(sqldb).fetchone()
     condb.close()
     return datdb
+
+
+def delete_one_info(dataId):
+    sqldb = f"DELETE FROM users WHERE user_id = '{dataId}'"
+
+    condb = connect()
+    curdb = condb.cursor()
+    curdb.execute(sqldb)
+    condb.commit()
+    condb.close()
