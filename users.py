@@ -1,4 +1,6 @@
 from ttkbootstrap import Toplevel, Frame, Label, Entry, Button, Treeview
+from ttkbootstrap import Scrollbar
+from ttkbootstrap.dialogs.dialogs import Messagebox
 import dba as db
 
 
@@ -11,6 +13,10 @@ class UsersWindow(Toplevel):
 
         # Load User Info
         self.load_info()
+
+        self.grab_set()
+        self.transient()
+        self.focus()
 
     def build_user(self):
         # Entry Frame
@@ -50,9 +56,19 @@ class UsersWindow(Toplevel):
 
         self.tblUser.column(1, width=50)
         self.tblUser.column(2, width=175)
-        self.tblUser.column(3, width=175)
+        self.tblUser.column(3, width=160)
 
-        self.tblUser.pack()
+        self.tblUser.pack(side="left")
+
+        # ScrollBar
+        self.sbrUser = Scrollbar(self.tblFrame, orient="vertical",
+                                 bootstyle="info-round")
+        self.sbrUser.pack(side="right", fill="y")
+        self.tblUser.config(yscrollcommand=self.sbrUser.set)
+        self.sbrUser.config(command=self.tblUser.yview)
+
+        self.tblUser.bind("<Double-Button-1>", self.select_modify)
+        self.tblUser.bind("<<TreeviewSelect>>", self.select_delete)
 
         # Buttons Frame
         self.btnFrame = Frame(self)
@@ -73,7 +89,8 @@ class UsersWindow(Toplevel):
         self.btnCancel.pack(pady=(0, 20))
 
         self.btnDelete = Button(self.btnFrame, width=15, text="Delete",
-                                state="disabled", bootstyle="warning")
+                                command=self.delete_user, state="disabled",
+                                bootstyle="warning")
         self.btnDelete.pack(pady=(0, 20))
 
         self.btnClose = Button(self.btnFrame, width=15, text="Close",
@@ -89,6 +106,15 @@ class UsersWindow(Toplevel):
         for item in data_user:
             self.tblUser.insert("", index="end", text=item[0],
                                 values=[item[0], item[1], item[2]])
+
+    def select_delete(self, event):
+        self.keyUser = self.tblUser.item(self.tblUser.focus(), "text")
+
+        if self.keyUser != "":
+            self.btnDelete.config(state="normal")
+
+    def select_modify(self, event):
+        self.keyUser = self.tblUser.item(self.tblUser.focus(), "text")
 
     def new_user(self):
         self.entId.config(state="normal", bootstyle="success")
@@ -121,3 +147,10 @@ class UsersWindow(Toplevel):
         self.btnSave.config(state="disabled")
         self.btnCancel.config(state="disabled")
         self.btnNew.config(state="normal")
+
+    def delete_user(self):
+        answer_user = Messagebox.show_question(message="Here comes the info",
+                                               title="Delete User", alert=True,
+                                               buttons=['Yes:success',
+                                                        'No:outline-danger'],
+                                               parent=self)
