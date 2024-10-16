@@ -127,6 +127,7 @@ class UsersWindow(Toplevel):
         self.btnSave.config(state="normal")
         self.btnCancel.config(state="normal")
         self.btnNew.config(state="disabled")
+        self.btnDelete.config(state="disabled")
 
         self.entId.focus()
 
@@ -150,6 +151,7 @@ class UsersWindow(Toplevel):
         self.btnSave.config(state="disabled")
         self.btnCancel.config(state="disabled")
         self.btnNew.config(state="normal")
+        self.btnDelete.config(state="disabled")
 
     def delete_user(self):
         deleteUser = db.retrieve_one_info(self.keyUser)
@@ -165,3 +167,5 @@ class UsersWindow(Toplevel):
         if answer_user != "No":
             db.delete_one_info(self.keyUser)
             self.load_info()
+        else:
+            self.btnDelete.config(state="disabled")
