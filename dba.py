@@ -45,7 +45,7 @@ def save_info(dataId, dataName, dataPassw):
 
 
 def retrieve_one_info(dataId):
-    sqldb = f"SELECT user_name FROM users WHERE user_id = '{dataId}'"
+    sqldb = f"SELECT * FROM users WHERE user_id = '{dataId}'"
 
     condb = connect()
     curdb = condb.cursor()
