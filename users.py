@@ -120,6 +120,7 @@ class UsersWindow(Toplevel):
         self.keyUser = self.tblUser.item(self.tblUser.focus(), "text")
 
         if self.keyUser != "":
+            self.btnAction = 2
             self.modify_user()
 
     def new_user(self):
@@ -139,7 +140,8 @@ class UsersWindow(Toplevel):
             db.save_info(self.entId.get(), self.entName.get(),
                          self.entPassword.get())
         else:
-            print("Update User Info")
+            db.modify_info(self.entId.get(), self.entName.get(),
+                           self.entPassword.get())
 
         self.tblFrame.focus()
         self.load_info()
