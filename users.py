@@ -191,3 +191,18 @@ class UsersWindow(Toplevel):
             self.load_info()
         else:
             self.btnDelete.config(state="disabled")
+
+    def enable_entries(self):
+        self.entId.config(state="normal")
+        self.entName.config(state="normal")
+        self.entPassword.config(state="normal")
+
+    def disable_entries(self):
+        self.entId.config(state="disabled")
+        self.entName.config(state="disabled")
+        self.entPassword.config(state="disabled")
+
+    def clear_entries(self):
+        self.entId.delete(0, "end")
+        self.entName.delete(0, "end")
+        self.entPassword.delete(0, "end")
