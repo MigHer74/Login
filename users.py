@@ -119,6 +119,9 @@ class UsersWindow(Toplevel):
     def select_modify(self, event):
         self.keyUser = self.tblUser.item(self.tblUser.focus(), "text")
 
+        if self.keyUser != "":
+            self.modify_user()
+
     def new_user(self):
         self.entId.config(state="normal", bootstyle="success")
         self.entName.config(state="normal", bootstyle="success")
@@ -139,6 +142,25 @@ class UsersWindow(Toplevel):
         self.load_info()
         self.cancel_user()
 
+    def modify_user(self):
+        modifyUser = db.retrieve_one_info(self.keyUser)
+
+        self.entId.config(state="normal", bootstyle="success")
+        self.entName.config(state="normal", bootstyle="success")
+        self.entPassword.config(state="normal", bootstyle="success")
+        self.btnSave.config(state="normal")
+        self.btnCancel.config(state="normal")
+
+        self.entId.insert(0, modifyUser[0])
+        self.entName.insert(0, modifyUser[1])
+        self.entPassword.insert(0, modifyUser[2])
+
+        self.entId.config(state="disabled")
+        self.btnNew.config(state="disabled")
+        self.btnDelete.config(state="disabled")
+
+        self.entName.focus()
+
     def cancel_user(self):
         self.entId.delete(0, "end")
         self.entName.delete(0, "end")
@@ -156,7 +178,7 @@ class UsersWindow(Toplevel):
     def delete_user(self):
         deleteUser = db.retrieve_one_info(self.keyUser)
 
-        messageUSer = f"Do you want to delete {deleteUser[0]} user info ?."
+        messageUSer = f"Do you want to delete {deleteUser[1]} user info ?."
 
         answer_user = Messagebox.show_question(message=messageUSer,
                                                title="Delete User", alert=True,
