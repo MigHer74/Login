@@ -125,6 +125,8 @@ class UsersWindow(Toplevel):
     def new_user(self):
         self.enable_entries()
 
+        self.btnAction = 1
+
         self.btnSave.config(state="normal")
         self.btnCancel.config(state="normal")
         self.btnNew.config(state="disabled")
@@ -133,12 +135,17 @@ class UsersWindow(Toplevel):
         self.entId.focus()
 
     def save_user(self):
-        db.save_info(self.entId.get(), self.entName.get(),
-                     self.entPassword.get())
+        if self.btnAction == 1:
+            db.save_info(self.entId.get(), self.entName.get(),
+                         self.entPassword.get())
+        else:
+            print("Update User Info")
 
         self.tblFrame.focus()
         self.load_info()
         self.cancel_user()
+
+        self.btnAction = 0
 
     def modify_user(self):
         modifyUser = db.retrieve_one_info(self.keyUser)
