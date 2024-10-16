@@ -54,6 +54,17 @@ def retrieve_one_info(dataId):
     return datdb
 
 
+def modify_info(dataId, dataName, dataPassw):
+    sqldb = f"""UPDATE users SET user_name = '{dataName}',
+    user_password = '{dataPassw}' WHERE user_id = '{dataId}'"""
+
+    condb = connect()
+    curdb = condb.cursor()
+    curdb.execute(sqldb)
+    condb.commit()
+    condb.close()
+
+
 def delete_one_info(dataId):
     sqldb = f"DELETE FROM users WHERE user_id = '{dataId}'"
 
