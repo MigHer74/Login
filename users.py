@@ -123,9 +123,7 @@ class UsersWindow(Toplevel):
             self.modify_user()
 
     def new_user(self):
-        self.entId.config(state="normal", bootstyle="success")
-        self.entName.config(state="normal", bootstyle="success")
-        self.entPassword.config(state="normal", bootstyle="success")
+        self.enable_entries()
 
         self.btnSave.config(state="normal")
         self.btnCancel.config(state="normal")
@@ -145,9 +143,8 @@ class UsersWindow(Toplevel):
     def modify_user(self):
         modifyUser = db.retrieve_one_info(self.keyUser)
 
-        self.entId.config(state="normal", bootstyle="success")
-        self.entName.config(state="normal", bootstyle="success")
-        self.entPassword.config(state="normal", bootstyle="success")
+        self.enable_entries()
+
         self.btnSave.config(state="normal")
         self.btnCancel.config(state="normal")
 
@@ -162,13 +159,9 @@ class UsersWindow(Toplevel):
         self.entName.focus()
 
     def cancel_user(self):
-        self.entId.delete(0, "end")
-        self.entName.delete(0, "end")
-        self.entPassword.delete(0, "end")
-
-        self.entId.config(state="disabled", bootstyle="default")
-        self.entName.config(state="disabled", bootstyle="default")
-        self.entPassword.config(state="disabled", bootstyle="default")
+        self.enable_entries()
+        self.clear_entries()
+        self.disable_entries()
 
         self.btnSave.config(state="disabled")
         self.btnCancel.config(state="disabled")
