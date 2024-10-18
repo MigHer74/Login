@@ -50,17 +50,15 @@ class UsersWindow(Toplevel):
         self.tblFrame.grid(row=1, column=0, padx=(15, 0), pady=(20, 20),
                            sticky="w")
 
-        self.tblUser = Treeview(self.tblFrame, columns=(1, 2, 3),
+        self.tblUser = Treeview(self.tblFrame, columns=(1, 2),
                                 show="headings", height=15,
                                 selectmode="browse", bootstyle="info")
 
         self.tblUser.heading(1, text="Id")
         self.tblUser.heading(2, text="Name")
-        self.tblUser.heading(3, text="Password")
 
-        self.tblUser.column(1, width=50)
-        self.tblUser.column(2, width=175)
-        self.tblUser.column(3, width=160)
+        self.tblUser.column(1, width=100)
+        self.tblUser.column(2, width=200)
 
         self.tblUser.pack(side="left")
 
