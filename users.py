@@ -74,31 +74,36 @@ class UsersWindow(Toplevel):
 
         # Buttons Frame
         self.btnFrame = Frame(self)
-        self.btnFrame.grid(row=1, column=1, padx=(15, 15), pady=(20, 20))
+        self.btnFrame.grid(row=1, column=1, padx=(0, 0), pady=(20, 20))
 
         self.btnNew = Button(self.btnFrame, width=15, text="New",
                              command=self.new_user, bootstyle="success")
-        self.btnNew.pack(pady=(0, 20))
+        self.btnNew.grid(row=0, column=0, padx=(0, 20), pady=(0, 25))
+
+        self.btnPassw = Button(self.btnFrame, width=15, text="Password",
+                               command=self.new_user, state="disabled",
+                               bootstyle="info")
+        self.btnPassw.grid(row=0, column=1, pady=(0, 25))
 
         self.btnSave = Button(self.btnFrame, width=15, text="Save",
                               command=self.save_user, state="disabled",
                               bootstyle="success")
-        self.btnSave.pack(pady=(0, 20))
+        self.btnSave.grid(row=1, column=0, padx=(0, 20), pady=(0, 25))
 
         self.btnCancel = Button(self.btnFrame, width=15, text="Cancel",
                                 command=self.cancel_user, state="disabled",
                                 bootstyle="warning")
-        self.btnCancel.pack(pady=(0, 20))
+        self.btnCancel.grid(row=1, column=1, pady=(0, 25))
 
         self.btnDelete = Button(self.btnFrame, width=15, text="Delete",
                                 command=self.delete_user, state="disabled",
                                 bootstyle="warning")
-        self.btnDelete.pack(pady=(0, 20))
+        self.btnDelete.grid(row=2, column=0, padx=(0, 20))
 
         self.btnClose = Button(self.btnFrame, width=15, text="Close",
                                command=self.destroy,
                                bootstyle="outline-danger")
-        self.btnClose.pack()
+        self.btnClose.grid(row=2, column=1)
 
     def load_info(self):
         data_user = db.retrieve_info("l")
