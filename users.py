@@ -119,6 +119,7 @@ class UsersWindow(Toplevel):
 
         if self.keyUser != "":
             self.btnDelete.config(state="normal")
+            self.btnPassw.config(state="normal")
 
     def select_modify(self, event):
         self.keyUser = self.tblUser.item(self.tblUser.focus(), "text")
@@ -136,6 +137,7 @@ class UsersWindow(Toplevel):
         self.btnCancel.config(state="normal")
         self.btnNew.config(state="disabled")
         self.btnDelete.config(state="disabled")
+        self.btnPassw.config(state="disabled")
 
         self.entId.focus()
 
@@ -184,8 +186,11 @@ class UsersWindow(Toplevel):
         self.btnCancel.config(state="disabled")
         self.btnNew.config(state="normal")
         self.btnDelete.config(state="disabled")
+        self.btnPassw.config(state="disabled")
 
     def delete_user(self):
+        self.btnPassw.config(state="disabled")
+        
         deleteUser = db.retrieve_one_info(self.keyUser)
 
         messageUSer = f"Do you want to delete {deleteUser[1]} user info ?."
