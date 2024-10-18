@@ -1,6 +1,7 @@
 from ttkbootstrap import Toplevel, Frame, Label, Entry, Button, Treeview
 from ttkbootstrap import Scrollbar
 from ttkbootstrap.dialogs.dialogs import Messagebox
+import bcrypt
 import dba as db
 
 
@@ -137,8 +138,12 @@ class UsersWindow(Toplevel):
 
     def save_user(self):
         if self.btnAction == 1:
+            password_hashed = bcrypt.hashpw(
+                self.entPassword.get().encode('utf-8'), bcrypt.gensalt())
+            password_storage = password_hashed.decode('utf-8')
+
             db.save_info(self.entId.get(), self.entName.get(),
-                         self.entPassword.get())
+                         password_storage)
         else:
             db.modify_info(self.entId.get(), self.entName.get(),
                            self.entPassword.get())
