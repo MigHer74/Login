@@ -190,7 +190,7 @@ class UsersWindow(Toplevel):
 
     def delete_user(self):
         self.btnPassw.config(state="disabled")
-        
+
         deleteUser = db.retrieve_one_info(self.keyUser)
 
         messageUSer = f"Do you want to delete {deleteUser[1]} user info ?."
